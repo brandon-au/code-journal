@@ -36,11 +36,16 @@ div > h2 {
 .notes > p {
   font-family: "Titillium Web", sans-serif;
   font-weight: 700;
+  text-indent: 1em;
 }
 
 .btn {
   justify-content: flex-end;
   width: 100%;
+}
+
+.text-padding {
+  padding: 5px;
 }
 
 .submit-btn {
