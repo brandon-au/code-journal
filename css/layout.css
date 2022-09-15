@@ -25,11 +25,21 @@
 
   .title {
     transform: translateY(-1em);
-    padding: 0 0.75rem;
+    padding: 0 1em;
     margin: 0;
   }
 
   .column-half {
     width: 50%;
+  }
+
+  .title-notes > h3,
+  .title-notes > p {
+    padding: 0 1em;
+    margin-top: 0;
+  }
+
+  .align-left {
+    justify-content: flex-start;
   }
 }

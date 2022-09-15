@@ -2,22 +2,37 @@ body {
   background-color: #f0f0f0;
 }
 
-.container {
-  width: 100%;
-}
-
 header {
   background-color: #562b81;
   width: 100%;
   height: 3em;
-  margin-top: 0;
-  align-content: center;
+  color: white;
+  margin: 0;
 }
 
-div > h2 {
+.container {
+  width: 100%;
+}
+
+.navbar {
+  height: 100%;
+  align-content: center;
+  align-items: baseline;
+}
+
+.app-name {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: white;
+}
+
+.nav-item {
   font-family: "Titillium Web", sans-serif;
   font-weight: 300;
   color: white;
+  text-decoration: none;
+  margin-left: 1em;
 }
 
 .entry-title > h1 {
@@ -70,4 +85,49 @@ div > h2 {
   margin: 1.5em 0;
   height: 3em;
   width: 6em;
+}
+
+ul {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+li {
+  width: 100%;
+}
+
+.entry-title {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-tag {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: rgb(100, 1, 100);
+  color: white;
+  border-radius: 0.25em;
+  border: none;
+  height: 1.5em;
+  width: 3em;
+  text-align: center;
+}
+
+.title-notes {
+  align-content: flex-start;
+  padding: 0;
+  margin-top: 0;
+}
+
+.title-notes > h3 {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+}
+
+.title-notes > p {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
 }
