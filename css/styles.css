@@ -25,6 +25,10 @@ div > h2 {
   font-weight: 600;
 }
 
+.column-half > img {
+  width: 100%;
+}
+
 .title {
   font-family: "Titillium Web", sans-serif;
   font-weight: 700;
@@ -33,10 +37,17 @@ div > h2 {
   margin-top: 0;
 }
 
+.notes {
+  width: 100%;
+}
+
 .notes > p {
   font-family: "Titillium Web", sans-serif;
   font-weight: 700;
-  text-indent: 1em;
+}
+
+.column-full > textarea {
+  width: 100%;
 }
 
 .btn {

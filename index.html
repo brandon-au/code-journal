@@ -29,9 +29,11 @@
       <div class="entry-title column-full">
         <h1>New Entry</h1>
       </div>
-      <form id="journal-entry">
-        <div class="img-url-title column-full row">
-          <img class="column-half" src="./images/placeholder-image-square.jpg" alt="placeholder image" style="padding: 0" id="preview">
+      <form id="journal-entry" class="row">
+        <div class="img-url-title row">
+          <div class="column-half">
+            <img src="./images/placeholder-image-square.jpg" alt="placeholder image" style="padding: 0" id="preview">
+          </div>
           <div class="title column-half">
             <p> Title</p>
             <label for="Title"></label>
@@ -41,9 +43,11 @@
             <input class="column-full text-padding" type="url" name="PhotoURL" id="photo" required>
           </div>
         </div>
-        <div class="notes row">
+        <div class="notes column-full">
           <p>Notes</p>
-          <textarea name="notes" class="column-full text-padding" rows="10"></textarea>
+          <div class="column-full">
+            <textarea name="notes" class="text-padding" rows="10"></textarea>
+          </div>
           <div class="btn row">
             <label for="SAVE"></label>
             <input class="submit-btn" type="submit" value="SAVE">
