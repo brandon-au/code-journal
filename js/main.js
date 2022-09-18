@@ -26,3 +26,40 @@ function submitData(event) {
   $image.setAttribute('src', '/images/placeholder-image-square.jpg');
   $journalEntry.reset();
 }
+
+function renderEntry(data) {
+  var $listEntry = document.createElement('li');
+
+  var $contentWrap = document.createElement('div');
+  $contentWrap.setAttribute('class', 'img-title-notes row');
+  $listEntry.appendChild($contentWrap);
+
+  var $imageWrap = document.createElement('div');
+  $imageWrap.setAttribute('class', 'column-half');
+  $contentWrap.appendChild($imageWrap);
+
+  var $imageEntry = document.createElement('img');
+  $imageEntry.setAttribute('src', data.imageURL);
+  $imageWrap.appendChild($imageEntry);
+
+  var $textContent = document.createElement('div');
+  $textContent.setAttribute('class', 'title-notes column-half text-padding');
+  $contentWrap.appendChild($textContent);
+
+  var $textTitle = document.createElement('p');
+  $textTitle.textContent = data.Title;
+  $textContent.appendChild($textTitle);
+
+  var $textDescription = document.createElement('p');
+  $textDescription.textContent = data.Notes;
+  $textContent.appendChild($textDescription);
+
+  return $listEntry;
+}
+
+var $ul = document.querySelector('.entry-list');
+
+for (var i = 0; i < data.length; i++) {
+  var $entry = renderEntry(data[i]);
+  $ul.appendChild($entry);
+}
