@@ -1,5 +1,4 @@
 var $photoUpload = document.querySelector('#photo');
-
 // https://miro.medium.com/max/2400/1*Csahvngj_g332RhhgD7OPQ.jpeg
 // image link for testing
 // Title: Ada Lovelace
@@ -27,6 +26,19 @@ function submitData(event) {
   $journalEntry.reset();
 }
 
+window.addEventListener('DOMContentLoaded', function () {
+
+  var $ul = document.querySelector('.entry-list');
+  for (var i = 0; i < data.entries.length; i++) {
+    var $entry = renderEntry(data.entries[i]);
+    $ul.appendChild($entry);
+  }
+});
+
+// window.addEventListener('submit', function () {
+//   console.log('value of window event submit action:', window.addListner);
+// });
+
 function renderEntry(data) {
   var $listEntry = document.createElement('li');
 
@@ -39,14 +51,14 @@ function renderEntry(data) {
   $contentWrap.appendChild($imageWrap);
 
   var $imageEntry = document.createElement('img');
-  $imageEntry.setAttribute('src', data.imageURL);
+  $imageEntry.setAttribute('src', data.Image);
   $imageWrap.appendChild($imageEntry);
 
   var $textContent = document.createElement('div');
   $textContent.setAttribute('class', 'title-notes column-half text-padding');
   $contentWrap.appendChild($textContent);
 
-  var $textTitle = document.createElement('p');
+  var $textTitle = document.createElement('h3');
   $textTitle.textContent = data.Title;
   $textContent.appendChild($textTitle);
 
@@ -55,11 +67,4 @@ function renderEntry(data) {
   $textContent.appendChild($textDescription);
 
   return $listEntry;
-}
-
-var $ul = document.querySelector('.entry-list');
-
-for (var i = 0; i < data.length; i++) {
-  var $entry = renderEntry(data[i]);
-  $ul.appendChild($entry);
 }

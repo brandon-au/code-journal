@@ -22,7 +22,7 @@
   <header>
     <div class="navbar row container column-full">
       <span class="app-name">Code Journal</span>
-      <a href="#" data-view="entries" class="nav-item">Entries</a>
+      <a href="entries" data-view="entries" class="nav-item">Entries</a>
     </div>
   </header>
   <main>
@@ -58,15 +58,15 @@
     </div>
     <!-- start of viewing entries -->
     <div class="container" data-view="entries">
-      <div class="column-full hidden">
+      <div class="column-full hidden no-entries">
         <p> No entries have been recorded.</p>
       </div>
       <div class="entry-title row column-full">
         <h1>Entries</h1>
-        <span class="new-tag">NEW</span>
+        <span class="new-tag"><a class="new-tag" href="entry-form"> NEW </a></span>
       </div>
       <ul class="entry-list row column-full">
-        <li>
+        <!-- <li>
           <div class="img-title-notes row">
             <div class="column-half">
               <img src="https://miro.medium.com/max/2400/1*Csahvngj_g332RhhgD7OPQ.jpeg" alt="Ada Lovelace" style="padding: 0">
@@ -78,27 +78,11 @@
                 Babbage's proposed mechanical general-purpose computer, the Analytical Engine.</p>
             </div>
           </div>
-        </li>
-        <li>
-          <div class="img-title-notes row">
-            <div class="column-half">
-              <img src="https://images.ctfassets.net/yr4qj72ki4ky/legacyBlogPost77Thumbnail/cd4783ad7b35efc4367166a570a9952e/bigstock-Real-Java-Script-Code-Developi-217215433.jpg?q=72" alt="Javascript" style="padding: 0">
-            </div>
-            <div class="title-notes column-half text-padding">
-              <h3>JavaScript</h3>
-              <p>JavaScript, often abbreviated as JS, is a programming language
-                that conforms to the ECMAScript specification.</p>
-              <p>Javascript is high-level, often just-in-time compiled, and
-                multi-paradigm. It has curly bracket syntaax, dynamic typing,
-                prototype-based object-orientation, and first-class functions.
-              </p>
-            </div>
-          </div>
-        </li>
+        </li> -->
       </ul>
     </div>
   </main>
-  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
 </body>
 </html>
