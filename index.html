@@ -22,11 +22,11 @@
   <header>
     <div class="navbar row container column-full">
       <span class="app-name">Code Journal</span>
-      <a href="entries" data-view="entries" class="nav-item">Entries</a>
+      <a data-view="entries" class="nav-item">Entries</a>
     </div>
   </header>
   <main>
-    <div class="container" data-view="entry-form">
+    <div class="container hidden" data-view="entry-form">
       <div class="entry-title column-full">
         <h1>New Entry</h1>
       </div>
@@ -58,27 +58,14 @@
     </div>
     <!-- start of viewing entries -->
     <div class="container" data-view="entries">
-      <div class="column-full hidden no-entries">
-        <p> No entries have been recorded.</p>
-      </div>
       <div class="entry-title row column-full">
         <h1>Entries</h1>
-        <span class="new-tag"><a class="new-tag" href="entry-form"> NEW </a></span>
+        <a class="new-tag"> NEW </a>
+      </div>
+      <div class="column-full row no-entries">
+        <p> No entries have been recorded.</p>
       </div>
       <ul class="entry-list row column-full">
-        <!-- <li>
-          <div class="img-title-notes row">
-            <div class="column-half">
-              <img src="https://miro.medium.com/max/2400/1*Csahvngj_g332RhhgD7OPQ.jpeg" alt="Ada Lovelace" style="padding: 0">
-            </div>
-            <div class="title-notes column-half text-padding">
-              <h3>Ada Lovelace</h3>
-              <p>Augusta Ada King, Countess of Lovelace was an English
-                mathematician and writer, chiefly known for her work on Charles
-                Babbage's proposed mechanical general-purpose computer, the Analytical Engine.</p>
-            </div>
-          </div>
-        </li> -->
       </ul>
     </div>
   </main>

@@ -12,6 +12,7 @@ $photoUpload.addEventListener('input', function () {
 var $journalEntry = document.querySelector('#journal-entry');
 $journalEntry.addEventListener('submit', submitData);
 
+// submits entry and stores in localstorage
 function submitData(event) {
   event.preventDefault();
   var entryData = {
@@ -26,18 +27,23 @@ function submitData(event) {
   $journalEntry.reset();
 }
 
-window.addEventListener('DOMContentLoaded', function () {
+var $noEntries = document.querySelector('.no-entries');
 
-  var $ul = document.querySelector('.entry-list');
-  for (var i = 0; i < data.entries.length; i++) {
-    var $entry = renderEntry(data.entries[i]);
-    $ul.appendChild($entry);
+// event listener to create entry and append to html
+window.addEventListener('DOMContentLoaded', function () {
+  if (data.entries.length > 0) {
+    $noEntries.className = 'column-full row no-entries hidden';
+    var $ul = document.querySelector('.entry-list');
+    for (var i = 0; i < data.entries.length; i++) {
+      var $entry = renderEntry(data.entries[i]);
+      $ul.appendChild($entry);
+    }
+  } else {
+    $noEntries.className = 'column-full row no-entries';
   }
 });
 
-// window.addEventListener('submit', function () {
-//   console.log('value of window event submit action:', window.addListner);
-// });
+// DOM tree to generate entry
 
 function renderEntry(data) {
   var $listEntry = document.createElement('li');
@@ -68,3 +74,19 @@ function renderEntry(data) {
 
   return $listEntry;
 }
+
+// toggle viewing and saving forms
+
+var $newBtn = document.querySelector('.new-tag');
+var $entryForm = document.querySelector('div[data-view="entry-form"]');
+var $viewEntry = document.querySelector('div[data-view="entries"]');
+$newBtn.addEventListener('click', function () {
+  $entryForm.className = 'container';
+  $viewEntry.className = 'container hidden';
+});
+
+var $navBtn = document.querySelector('.nav-item');
+$navBtn.addEventListener('click', function () {
+  $entryForm.className = 'container hidden';
+  $viewEntry.className = 'container';
+});
