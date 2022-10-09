@@ -32,7 +32,7 @@ function submitData(event) {
 
 var $noEntries = document.querySelector('.no-entries');
 
-// event listener to create entry and append to html
+// event listener to append all entries to html
 window.addEventListener('DOMContentLoaded', function () {
   viewSwap(data.view);
   if (data.entries.length > 0) {
@@ -51,7 +51,7 @@ function viewSwap(dataView) {
   if (dataView === 'entry-form') {
     $entryForm.className = 'container';
     $viewEntry.className = 'container hidden';
-  } else {
+  } else if (dataView === 'entries') {
     $entryForm.className = 'container hidden';
     $viewEntry.className = 'container';
   }
@@ -61,6 +61,7 @@ function viewSwap(dataView) {
 
 function renderEntry(data) {
   var $listEntry = document.createElement('li');
+  $listEntry.setAttribute('data-entry-id', data.entryId);
 
   var $contentWrap = document.createElement('div');
   $contentWrap.setAttribute('class', 'img-title-notes row');
@@ -78,13 +79,21 @@ function renderEntry(data) {
   $textContent.setAttribute('class', 'title-notes column-half text-padding');
   $contentWrap.appendChild($textContent);
 
+  var $titleContainer = document.createElement('div');
+  $titleContainer.setAttribute('class', 'title-notes text-padding row align-baseline justify-space-between');
+  $textContent.appendChild($titleContainer);
+
   var $textTitle = document.createElement('h3');
   $textTitle.textContent = data.Title;
-  $textContent.appendChild($textTitle);
+  $titleContainer.appendChild($textTitle);
 
   var $textDescription = document.createElement('p');
   $textDescription.textContent = data.Notes;
   $textContent.appendChild($textDescription);
+
+  var $editEntry = document.createElement('i');
+  $editEntry.setAttribute('class', 'fa-solid fa-pen edit-btn');
+  $titleContainer.appendChild($editEntry);
 
   return $listEntry;
 }
@@ -105,4 +114,14 @@ $navBtn.addEventListener('click', function () {
   $entryForm.className = 'container hidden';
   $viewEntry.className = 'container';
   data.view = 'entries';
+});
+
+// edit entry functionality
+
+$ul.addEventListener('click', function () {
+  if (event.target.tagName !== 'I') {
+    return;
+  }
+  viewSwap('entry-form');
+  // data.editing = data.entries;
 });
