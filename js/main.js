@@ -22,11 +22,26 @@ function submitData(event) {
     Notes: $journalEntry.elements.notes.value,
     entryId: data.nextEntryId
   };
-  data.nextEntryId++;
-  data.entries.unshift(entryData);
-  var entryList = renderEntry(entryData);
-  $ul.prepend(entryList);
-  $image.setAttribute('src', '/images/placeholder-image-square.jpg');
+  if (data.editing !== null) {
+    var updatedEntry = {
+      Title: $journalEntry.elements.title.value,
+      Image: $journalEntry.elements.PhotoURL.value,
+      Notes: $journalEntry.elements.notes.value,
+      entryId: data.editing.entryId
+    };
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.editing.entryId === data.entries[i].entryId) {
+        data.entries[i] = updatedEntry;
+      }
+    }
+  } else if (data.editing === null) {
+    data.nextEntryId++;
+    data.entries.unshift(entryData);
+    var entryList = renderEntry(entryData);
+    $ul.prepend(entryList);
+    $image.setAttribute('src', '/images/placeholder-image-square.jpg');
+  }
+  viewSwap('entries');
   $journalEntry.reset();
 }
 
@@ -118,10 +133,20 @@ $navBtn.addEventListener('click', function () {
 
 // edit entry functionality
 
-$ul.addEventListener('click', function () {
-  if (event.target.tagName !== 'I') {
-    return;
+$ul.addEventListener('click', function (event) { // event listener on parent of entries
+  if (event.target.tagName !== 'I') { // checks if event target is not I element
+    return; // if not I element, returns from funtion
   }
-  viewSwap('entry-form');
-  // data.editing = data.entries;
+  viewSwap('entry-form'); // I element is click, swaps to entry form
+  var editId = event.target.closest('li').getAttribute('data-entry-id'); // event target is I, gets the data-entry-id from closet li element,which is corresponding parent
+  editId = parseInt(editId); // parses data-entry-id into value that can be compared
+  for (let i = 0; i < data.entries.length; i++) { // loops through list of entries in data object
+    if (editId === data.entries[i].entryId) { // checks if data-entry-id of li is equal to id in the data.entries object
+      data.editing = data.entries[i]; // if matches, assigns it to editing property in data object
+    }
+  }
+  $journalEntry.elements.title.value = data.editing.Title; // reassigns value of Title key in data object to value in the $journalEntry
+  $journalEntry.elements.PhotoURL.value = data.editing.Image;
+  $image.src = data.editing.Image;
+  $journalEntry.elements.notes.value = data.editing.Notes;
 });
