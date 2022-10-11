@@ -141,3 +141,12 @@ a:hover {
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
 }
+
+.edit-btn {
+  justify-content: flex-end;
+  color: rgb(71, 0, 71);
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+}
